@@ -1,0 +1,4 @@
+"0",""
+"0","na.omit(mydf) %>%"
+"0","  select (everything()) %>%"
+"0","  summarise_all(funs(sum(is.na(.))))"

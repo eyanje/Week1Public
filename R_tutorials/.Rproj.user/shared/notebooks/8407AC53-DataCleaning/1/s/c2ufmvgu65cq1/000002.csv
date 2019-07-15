@@ -1,0 +1,6 @@
+"0","## year of survey, total participants, male, female, min(age), max(age), avg(age)"
+"0",""
+"0","## load the data"
+"0","load(""/Users/ka20943/Downloads/nhanes_merged_12_2018.Rdata"")"
+"2","Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
+"

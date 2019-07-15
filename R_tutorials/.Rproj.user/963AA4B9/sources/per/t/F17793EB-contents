@@ -1,0 +1,210 @@
+---
+title: "R Tutorial"
+output: html_notebook
+---
+
+Install and load packages
+```{r}
+.packages <- c("tidyverse", "ggplot2")
+# Install CRAN packages (if not already installed)
+.inst <- .packages %in% installed.packages()
+if(length(.packages[!.inst]) > 0) install.packages(.packages[!.inst])
+# Load packages into session
+lapply(.packages, library, character.only=TRUE)
+```
+
+We are going to duplicate the Pandas tutorial in R!
+
+Dataset for tutorial and problem set:
+Pima Indian Heritage Diabetes
+
+Each person in the dataset is a female who is at least 21 years old
+
+Below are the variables for each person in the dataset
+  'preg': number of pregnancies  
+  'plas': plasma glucose concentration 
+  'pres': blood pressure 
+  'skin': skin thickness
+  'test': Insulin
+  'mass': BMI
+  'pedi': diabetes pedigree function
+  'age': age
+  'class': '0' means does not have diabetes and '1' means has diabetes
+Go to the link below to see the raw comma seperated values (csv) data:
+
+https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv
+
+Step 1: Read the data source into a dataframe
+```{r}
+## Read the csv file
+df <- read_csv("https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv", col_names = c("preg", "plas", "pres", "skin", "test", "mass", "predi", "age", "class"))
+
+```
+
+Look at the data frame
+```{r}
+## the type 
+class(df)
+```
+Examine the data frame
+```{r}
+# number of rows
+nrow(df)
+sprintf("Number of rows:%d", nrow(df))
+
+# number of columns
+ncol (df)
+sprintf("Number of columns:%d", ncol(df))
+
+## get the colnames
+colnames(df)
+
+# top x rows
+head(df) ## 6 rows is the default
+head(df, 10) ## gives you the top 10 rows
+```
+Some other functions for looking at the data
+```{r}
+glimpse(df) ## from tidyverse
+```
+
+Indexing, filtering, and summarizing data.
+
+There are multiple ways of indexing, filtering and summarizing data. We will look at two flavors of it.
+
+First - Using array methods
+```{r}
+## get the first row
+df[1,]
+
+## get the 3rd column for the first 10 rows
+df[1:10, 3]
+
+# get columns 1 through 5 for all rows
+df[, 1:5]
+
+# you can also use column names to retrieve 
+## get the 3rd (pres) column for the first 10 rows
+df[1:10, "pres"]
+
+## to assign to a new variable
+a <- df [,1:5]
+head(a)
+
+```
+
+Living in the tidyverse - and filtering. 
+"%>%" -- powerful chaining/pipelining method
+```{r}
+## get the first row only
+df %>%
+  slice(1)
+
+## get the 3rd column of the first 10 rows (using column position)
+df %>%
+  slice (1:10) %>%
+  select (3)
+
+# get columns 1 through 5 for all rows
+df %>%
+  select (1:5)
+
+# using column names (the more widely used method)
+## get the 3rd (pres) column for the first 10 rows
+df %>%
+  slice (1:10) %>%
+  select (pres)
+
+# multiple columns
+df %>%
+  slice (1:10) %>%
+  select (preg, pres, class)
+
+# assignment works the same way
+a <- df %>%
+     slice (1:10) %>%
+     select (preg, pres, class)
+```
+
+Lets do some filtering!
+In this example, we're going to subset into this dataset to get only women over 39 who have had more than 2 pregnancies.
+
+```{r}
+df %>%
+  filter(age > 39 & preg > 2) 
+
+## you can assign this to another data frame
+mydf <- df %>%
+        filter(age > 39 & preg > 2)
+
+head(mydf)
+```
+
+Summary statistics on the data
+```{r}
+## Find the mean of a column
+mean(df$preg) # mean number of pregnancies
+sd (df$preg) # standard deviation
+quantile (df$preg)
+
+## doing it across mulitple columns
+df %>%
+  summarize(mean_preg = mean (preg),
+            mean_plas = mean (plas),
+            mean_pres = mean (pres))
+
+"Hello world" ## lol
+
+```
+
+Finding and dealing with missing values
+
+```{r}
+
+na.omit(mydf) %>%
+  select (everything()) %>%
+  summarise_all(funs(sum(is.na(.))))
+```
+
+Missing data - find it and deal with it!
+
+Download the small subset of NHANES from: https://drive.google.com/open?id=1hW0wgPc-tIiHbHCHMLWUvVV_xv2km1TH
+```{r}
+nh_df <- readRDS ("/Users/admin/Downloads/small_subset.rds")
+
+nrow(nh_df)
+ncol(nh_df)
+```
+
+How much data is missing? R marks missing data as NAs
+is.na () -- powerful function for finding the NAs
+```{r}
+nh_df %>%
+  select (everything()) %>%
+  summarise_all(funs(sum(is.na(.))))
+
+```
+
+
+Summary statistics with NAs
+```{r}
+## Find the mean of a column
+mean(nh_df$BMXBMI, na.rm=TRUE) # mean number of pregnancies
+sd (nh_df$BMXBMI, na.rm=TRUE) # standard deviation
+quantile (nh_df$BMXBMI, na.rm=TRUE)
+
+## doing it across mulitple columns
+nh_df %>%
+  summarize(mean_bmi = mean (BMXBMI, na.rm =TRUE),
+            mean_age = mean (RIDAGEYR, na.rm=TRUE))
+```
+
+```{c}
+
+#include <iostream>
+
+int main(int argc, char *argv[]) {
+  std::cout << "test" << std::endl;
+}
+
+```

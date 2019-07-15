@@ -1,0 +1,5 @@
+"0",""
+"0","# multiple columns"
+"0","df %>%"
+"0","  slice (1:10) %>%"
+"0","  select (preg, pres, class)"

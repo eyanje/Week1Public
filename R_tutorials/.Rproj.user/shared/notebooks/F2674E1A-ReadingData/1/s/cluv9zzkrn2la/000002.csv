@@ -1,0 +1,4 @@
+"2","Error in inDL(x, as.logical(local), as.logical(now), ...) : 
+  unable to load shared object 'C:/Users/admin/programming/beaverworks/medlytics/Week1Public/R_tutorials/c2ea44079694d.dll':
+  LoadLibrary failure:  The specified module could not be found.
+"

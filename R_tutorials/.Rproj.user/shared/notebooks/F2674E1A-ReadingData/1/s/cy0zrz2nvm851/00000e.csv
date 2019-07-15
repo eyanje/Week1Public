@@ -1,0 +1,5 @@
+"0",""
+"0","## get the 3rd column of the first 10 rows (using column position)"
+"0","df %>%"
+"0","  slice (1:10) %>%"
+"0","  select (3)"

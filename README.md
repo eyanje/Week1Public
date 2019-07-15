@@ -1,4 +1,4 @@
-# Medlytics Week 1
+# Medlytics Week 1!
 Welcome! This is the repository for all assignments and datasets for Week 1 of the BeaverWorks Medlytics course 2019. 
 All the worksheets are empty; we recommend copying the links to each notebook as needed and importing them into your Colaboratory drive.
 

@@ -1,0 +1,38 @@
+---
+title: "Linear Regression and more"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library (ggplot2)
+```
+
+```{r}
+df <- readRDS("~/Downloads/nhanes_yrs5.rds")
+```
+
+Models in R: https://cran.r-project.org/web/packages/broom/vignettes/broom.html
+```{r}
+library(broom)
+lm(LBXGLU ~ BMXBMI + RIDAGEYR + RIAGENDR, df) %>%
+tidy()
+
+mod <- lm(LBXGLU ~ BMXBMI + RIDAGEYR + RIAGENDR, df)
+
+summary(mod)
+
+```
+
+```{r}
+augment (mod)
+```
+
+```{r}
+glance (mod)
+```
+
+```{r}
+plot(mod)
+```
+

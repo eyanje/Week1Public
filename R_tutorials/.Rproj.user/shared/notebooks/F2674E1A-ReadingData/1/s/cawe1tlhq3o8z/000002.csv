@@ -1,0 +1,15 @@
+"0","## Read the csv file"
+"0","df <- read_csv(""https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"", col_names = c(""preg"", ""plas"", ""pres"", ""skin"", ""test"", ""mass"", ""predi"", ""age"", ""class""))"
+"2","Parsed with column specification:
+cols(
+  preg = [32mcol_double()[39m,
+  plas = [32mcol_double()[39m,
+  pres = [32mcol_double()[39m,
+  skin = [32mcol_double()[39m,
+  test = [32mcol_double()[39m,
+  mass = [32mcol_double()[39m,
+  predi = [32mcol_double()[39m,
+  age = [32mcol_double()[39m,
+  class = [32mcol_double()[39m
+)
+"

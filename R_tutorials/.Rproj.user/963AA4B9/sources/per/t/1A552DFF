@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1562850659682.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "51748523",
+    "id" : "1A552DFF",
+    "lastKnownWriteTime" : 1563051616,
+    "last_content_update" : 1563051616202,
+    "path" : "C:/Users/admin/programming/beaverworks/medlytics/Week1Public/R_tutorials/DataCleaning.Rmd",
+    "project_path" : "DataCleaning.Rmd",
+    "properties" : {
+        "cursorPosition" : "60,3",
+        "scrollLine" : "61"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

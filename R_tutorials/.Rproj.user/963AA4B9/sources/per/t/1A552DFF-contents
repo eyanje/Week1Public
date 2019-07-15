@@ -1,0 +1,118 @@
+---
+title: "BWSI Medlytics - Data Cleaning and Transformation"
+output:
+  html_document: default
+  html_notebook: default
+  pdf_document: default
+---
+
+```{r, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r, message=FALSE, warning=FALSE, include=FALSE, eval=FALSE}
+## year of survey, total participants, male, female, min(age), max(age), avg(age)
+
+## load the data
+load("/Users/admin/Downloads/nhanes_merged_12_2018.Rdata")
+```
+
+```{r}
+## subset the data to make it easier to work with
+df <- bigData %>% 
+      filter(SDDSRVYR %in% c(5))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, datadictionary, warning=FALSE}
+# examine variables
+head(tabDesc)
+```
+
+Understanding your data 
+* Summary statistics
+  * Measures of spread (variance, IQR, standard deviation, range (min, max)
+  * central tendency (mean, median, mode)
+* Visual: Distributions
+  * Histograms
+  * Box and whiskers
+  * Violin plots
+  * Cumulative distribution function (CDF)
+
+```{r,message=FALSE, warning=FALSE, include=FALSE, load, eval=FALSE}
+## lets examine the data
+
+library(broom)
+#dplyr::glimpse(bigData)
+
+## pick a variable : Body Mass Index
+## variable name: BMXBMI
+a <- bigData %>%
+    summarize (min=min (BMXBMI, na.rm=TRUE),
+               max = max (BMXBMI, na.rm=TRUE),
+               mean = mean (BMXBMI, na.rm=TRUE),
+               sd = sd (BMXBMI, na.rm=TRUE),
+               var = var (BMXBMI, na.rm =TRUE),
+               median = median (BMXBMI, na.rm=TRUE))
+
+print (a)
+print (quantile (bigData$BMXBMI, na.rm=TRUE))
+
+```
+
+```{r}
+
+#df <- bigData %>%
+#      filter(SDDSRVYR %in% c(3,4,5))
+
+ggplot(bigData, aes(x=BMXBMI)) +
+  geom_histogram(color="blue", binwidth =2 )+
+  theme (
+    axis.title = element_text(size = 16, face="bold"),
+    axis.text = element_text(size = 14, face="bold")
+  ) +
+  xlab("Body Mass Index (kg/m2)")
+```
+
+```{r}
+df <- bigData %>% 
+      filter(!is.na(BMXBMI) & !is.na(female))
+ggplot(df, aes(y=BMXBMI, x=as.factor(female))) +
+  geom_boxplot()+
+  theme (
+    axis.title = element_text(size = 16, face="bold"),
+    axis.text = element_text(size = 14, face="bold")
+  ) +
+  xlab("Sex") +
+  ylab("Body Mass Index (kg/m2)")
+
+```
+
+```{r}
+ggplot(df, aes(y=BMXBMI, x=as.factor(female), fill=as.factor(female))) +
+     geom_violin() + 
+scale_fill_brewer(palette="Dark2") +
+   theme (
+    axis.title = element_text(size = 16, face="bold"),
+    axis.text = element_text(size = 14, face="bold")
+  ) +
+  xlab("Sex") +
+  ylab("Body Mass Index (kg/m2)")
+```
+
+```{r}
+ggplot(df, aes(BMXBMI, col=as.factor(female), size=1)) +
+ stat_ecdf(geom = "step")  + 
+  xlab("Body Mass Index (kg/m2)") + 
+ theme (
+    axis.title = element_text(size = 16, face="bold"),
+    axis.text = element_text(size = 14, face="bold"),
+    legend.position = "none"
+  ) 
+
+```
+
+```{r}
+pairs(mtcars)
+```
+

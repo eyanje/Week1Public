@@ -1,0 +1,4 @@
+"0",""
+"0","# get columns 1 through 5 for all rows"
+"0","df %>%"
+"0","  select (1:5)"

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1562850718206.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1149591545",
+    "id" : "F17793EB",
+    "lastKnownWriteTime" : 1563051597,
+    "last_content_update" : 1563051604411,
+    "path" : "C:/Users/admin/programming/beaverworks/medlytics/Week1Public/R_tutorials/ReadingData.Rmd",
+    "project_path" : "ReadingData.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "201,6",
+        "scrollLine" : "181"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,6 @@
+"0",""
+"0","## you can assign this to another data frame"
+"0","mydf <- df %>%"
+"0","        filter(age > 39 & preg > 2)"
+"0",""
+"0","head(mydf)"

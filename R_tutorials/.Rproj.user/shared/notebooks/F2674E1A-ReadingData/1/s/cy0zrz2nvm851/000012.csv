@@ -1,0 +1,6 @@
+"0",""
+"0","# using column names (the more widely used method)"
+"0","## get the 3rd (pres) column for the first 10 rows"
+"0","df %>%"
+"0","  slice (1:10) %>%"
+"0","  select (pres)"

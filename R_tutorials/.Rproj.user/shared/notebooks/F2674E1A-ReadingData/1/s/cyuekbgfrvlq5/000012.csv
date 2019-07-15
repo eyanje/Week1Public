@@ -1,0 +1,4 @@
+"0",""
+"0","# you can also use column names to retrieve "
+"0","## get the 3rd (pres) column for the first 10 rows"
+"0","df[1:10, ""pres""]"
