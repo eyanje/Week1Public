@@ -5,6 +5,14 @@ output: html_notebook
 
 Install and load packages
 ```{r}
+install.packages("tidyverse")
+install.packages("ggplot2")
+
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
 .packages <- c("tidyverse", "ggplot2")
 # Install CRAN packages (if not already installed)
 .inst <- .packages %in% installed.packages()
@@ -46,6 +54,8 @@ Look at the data frame
 ## the type 
 class(df)
 ```
+
+
 Examine the data frame
 ```{r}
 # number of rows
@@ -162,6 +172,7 @@ Finding and dealing with missing values
 ```{r}
 
 na.omit(mydf) %>%
+mydf %>%
   select (everything()) %>%
   summarise_all(funs(sum(is.na(.))))
 ```
@@ -171,6 +182,7 @@ Missing data - find it and deal with it!
 Download the small subset of NHANES from: https://drive.google.com/open?id=1hW0wgPc-tIiHbHCHMLWUvVV_xv2km1TH
 ```{r}
 nh_df <- readRDS ("/Users/admin/Downloads/small_subset.rds")
+nh_df <- readRDS ("~/Downloads/small_subset.rds")
 
 nrow(nh_df)
 ncol(nh_df)

@@ -16,6 +16,7 @@ library(tidyverse)
 
 ## load the data
 load("/Users/admin/Downloads/nhanes_merged_12_2018.Rdata")
+load("/Users/ka20943/Downloads/nhanes_merged_12_2018.Rdata")
 ```
 
 ```{r}
